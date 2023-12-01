@@ -16,6 +16,8 @@ jobs:
     - uses: actions/checkout@v3
     - name: check listar
       run: ls
+    - name: docker build vote
+      run: |
         docker build -t $REGISTRY/$IMAGE_NAME:vote-1.0.0 ./vote
         docker build -t $REGISTRY/$IMAGE_NAME:result-1.0.0 ./result
         docker build -t $REGISTRY/$IMAGE_NAME:worker-1.0.0 ./worker
