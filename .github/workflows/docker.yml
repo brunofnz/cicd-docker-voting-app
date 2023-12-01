@@ -18,11 +18,8 @@ jobs:
       run: ls
     - name: docker build
       run: |
-        cd vote
-        docker build -t $REGISTRY/$IMAGE_NAME:vote-1.0.0 .
-        cd result
-        docker build -t $REGISTRY/$IMAGE_NAME:result-1.0.0 .
-        cd worker
-        docker build -t $REGISTRY/$IMAGE_NAME:worker-1.0.0 .
+        cd vote && docker build -t $REGISTRY/$IMAGE_NAME:vote-1.0.0 . && cd ..
+        cd result && docker build -t $REGISTRY/$IMAGE_NAME:result-1.0.0 . && cd
+        cd worker && docker build -t $REGISTRY/$IMAGE_NAME:worker-1.0.0 . && cd
     - name: docker images
       run: docker images | grep $REGISTRY/$IMAGE_NAME
